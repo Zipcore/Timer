@@ -1,0 +1,508 @@
+"Phrases"
+{
+    "Force Mode"
+    {
+        "sv"             "Du måste välja en spelstil först! Skriv !style i chatten och välj smart."
+    }
+       
+    "Round Finish"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:d}"
+        "sv"            "{1} klarade mappen på {2} och {4} hopp."
+    }
+       
+    "Round Finish Without Jumps"
+    {
+        "#format"           "{1:s},{2:s},{3:s}"
+        "sv"            "{1} klarade mappen på {2}."
+    }
+       
+    "Round Finish Difficulty"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:s},{5:d}"
+        "sv"             "{1} klarade mappen på {2} ({4}) och {5} hopp."
+    }
+       
+    "Round Finish Difficulty Without Jumps"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:s}"
+        "sv"             "{1} klarade mappen på {2} ({4})!"
+    }
+    "Bonus Round Finish"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:d}"
+        "sv"            "{1} har klarat bonus nivån på {2} och {4} hopp."
+    }
+       
+    "Bonus Round Finish Without Jumps"
+    {
+        "#format"           "{1:s},{2:s},{3:s}"
+        "sv"            "{1} har klarat bonus nivån på {2}."
+    }
+       
+    "Bonus Round Finish Difficulty"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:s},{5:d}"
+        "sv"            "{1} har klarat bonus nivån på {2} ({4}) och {5} hopp."
+    }
+       
+    "Bonus Round Finish Difficulty Without Jumps"
+    {
+        "#format"        "{1:s},{2:s},{3:s},{4:s}"
+        "sv"             "{1} har klarat bonus nivån på {2} ({4})!"
+    }
+       
+    "Short Round Finish"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:d}"
+        "sv"            "{1} har klarat den korta banan på {2} och {4} hopp."
+    }
+       
+    "Short Round Finish Without Jumps"
+    {
+        "#format"           "{1:s},{2:s},{3:s}"
+        "sv"            "{1} har klarat den korta banan på {2}."
+    }
+       
+    "Short Round Finish Difficulty"
+    {
+        "#format"           "{1:s},{2:s},{3:s},{4:s},{5:d}"
+        "sv"            "{1} har klarat den korta mappen på {2} ({4}) och {5} hopp."
+    }
+       
+    "Short Round Finish Difficulty Without Jumps"
+    {
+        "#format"        "{1:s},{2:s},{3:s},{4:s}"
+        "sv"             "{1} har klarat den korta mappen på {2} ({4})!"
+    }
+       
+    "Point Select Panel"
+    {
+        "#format"           "{1:s}"
+        "sv"            "Var snäll och stå på {1} punkten av zonen,\noch tryck på mus2."
+    }
+       
+    "Tier"
+    {
+        "sv"            "Svårighetsgrad"
+    }
+       
+    "Cancel"
+    {
+        "sv"            "Avbryt"
+    }
+       
+    "Please wait"
+    {
+        "sv"            "Var god vänta..."
+    }
+ 
+    "FIRST"
+    {
+        "sv"            "FÖRSTA"
+    }
+       
+    "SECOND"
+    {
+        "sv"            "DEN ANDRA"
+    }
+       
+    "Map Zone Delete"
+    {
+        "sv"            "Map zonen togs bort utan fel."
+    }
+       
+    "Level"
+    {
+        "sv"            "Nivå"
+    }
+       
+    "Bonus Level"
+    {
+        "sv"            "Bonus Nivå"
+    }
+       
+    "Time"
+    {
+        "sv"            "Tid"
+    }
+       
+    "Jumps"
+    {
+        "sv"            "Hopp"
+    }
+       
+    "HUD Speed"
+    {
+        "sv"            "Fart"
+    }
+ 
+    "HUD Best Times"
+    {
+        "sv"            "Bästa Tiderna"
+    }
+       
+    "HUD Difficulty"
+    {
+        "sv"            "Spelstilar"
+    }
+ 
+    "Rank"
+    {
+        "sv"            "Rang"
+    }
+       
+    "No target"
+    {
+        "sv"            "Inget mål hittades."
+    }
+       
+    "Physics Difficulty"
+    {
+        "sv"            "Svårighetsgrad"
+    }
+       
+    "World Record Menu Title"
+    {
+        "sv"            "Världsrekord"
+    }
+       
+    "Bonus World Record Menu Title"
+    {
+        "sv"            "Bonus Världsrekord"
+    }
+       
+    "Short World Record Menu Title"
+    {
+        "sv"            "Korta Världsrekord"
+    }
+       
+    "World Record Loading"
+    {
+        "sv"            "Världsrekorden laddar fortfarande, försök igen om en liten stund."
+    }
+       
+    "Bonus World Record Loading"
+    {
+        "sv"            "Bonus Världsrekord laddar fortfarande, försök igen om en liten stund."
+    }
+       
+    "Short World Record Loading"
+    {
+        "sv"            "Korta Världsrekord laddar fortfarande, försök igen om en liten stund."
+    }
+       
+    "No Records"
+    {
+        "sv"            "Det finns inga rekord."
+    }
+       
+    "No Difficulty Records"
+    {
+        "sv"            "Det finns inga rekord för den här svårighetsgraden."
+    }
+       
+    "Record Info"
+    {
+        "sv"            "Rekord info"
+    }
+       
+    "Player Name"
+    {
+        "sv"            "Spelarnamn"
+    }
+       
+    "Rank"
+    {
+        "sv"            "Rang"
+    }
+ 
+    "Toggle visibilty"
+    {
+        "sv"            "Växlade spelares synlighet."
+    }
+ 
+    "Timer Management"
+    {
+        "sv"            "Tids Förvaltning"
+    }
+ 
+    "Delete Map Records"
+    {
+        "sv"            "Ta borta alla rekord för den här banan"
+    }
+       
+    "Delete All Map Zones"
+    {
+        "sv"            "Ta bort alla ban zoner"
+    }
+ 
+    "Delete Player Record"
+    {
+        "sv"            "Ta bort rekord"
+    }
+ 
+    "Add Map Zone"
+    {
+        "sv"            "Lägg till zoner"
+    }
+ 
+    "Delete Map Zone"
+    {
+        "sv"            "Ta bort zoner"
+    }
+       
+    "Select zone type"
+    {
+        "sv"            "Välj zon typ:"
+    }
+       
+    "Pause Info"
+    {
+        "sv"            "Timer pausad. Skriv !resume för att återställa timern."
+    }
+       
+    "Start"
+    {
+        "sv"            "Start"
+    }
+       
+    "End"
+    {
+        "sv"            "Slut"
+    }
+       
+    "Glitch1"
+    {
+        "sv"            "Stanna Timern" 
+    }
+       
+    "Glitch2"
+    {
+        "sv"            "Starta Om Timern"
+    }
+       
+    "Glitch3"
+    {
+        "sv"            "Teleportera spelaren till sista kontrollstation"
+    }
+       
+    "Glitch4"
+    {
+        "sv"            "Teleportera spelaren till nästa kontrollstation"
+    }
+       
+    "BonusStart"
+    {
+        "sv"            "Bonus Start"
+    }
+       
+    "BonusEnd"
+    {
+        "sv"            "Bonus Slut"
+    }
+       
+    "Enable NoBlock"
+    {
+        "sv"            "Aktivera NoBlock"
+    }
+       
+    "Disable NoBlock"
+    {
+        "sv"            "Inaktivera NoBlock"
+    }
+       
+    "Speed Limit"
+    {
+        "sv"            "Hastighetsbegränsning"
+    }
+       
+    "Player Clip"
+    {
+        "sv"            "Osynlig vägg"
+    }
+       
+    "Longjump"
+    {
+        "sv"            "Longjump zon"
+    }
+       
+    "Booster"
+    {
+        "sv"            "Booster"
+    }
+       
+    "Full Booster"
+    {
+        "sv"            "Full Booster"
+    }
+       
+    "Arena"
+    {
+        "sv"            "Arena"
+    }
+       
+    "Bounce Back"
+    {
+        "sv"            "Studsa tillbaka"
+    }
+       
+    "Jail"
+    {
+        "sv"            "Fängelse"
+    }
+       
+    "Lift"
+    {
+        "sv"            "Lyfta"
+    }
+       
+    "Bullet Time"
+    {
+        "sv"            "Skott Tid"
+    }
+       
+    "No Gravity Overwrite"
+    {
+        "sv"            "Ingen gravitations överskrivning"
+    }
+       
+    "NPC Next"
+    {
+        "sv"            "Nästa NPC"
+    }
+       
+    "NPC Next Double"
+    {
+        "sv"            "Dubbel teleport NPC"
+    }
+       
+    "No Boost"
+    {
+        "sv"            "Ingen Boost"
+    }
+       
+    "Restart Normal Timer"
+    {
+        "sv"            "Starta om Normal Timer"
+    }
+       
+    "Restart Bonus Timer"
+    {
+        "sv"            "Starta om Bonus Timer"
+    }
+       
+    "Short End"
+    {
+        "sv"            "Korta Slutet"
+    }
+       
+    "Choose Player"
+    {
+        "sv"            "Välj Spelare:"
+    }
+       
+    "Delete Records"
+    {
+        "sv"            "Ta bort Rekord:"
+    }
+       
+    "Custom FPS"
+    {
+        "sv"            "Du har blivit flyttad till en FPS_MAX spelstil, om du skulle vilja spela i NORMAL, sätt fps_max till 300."
+    }
+       
+    "Tier Limit"
+    {
+        "sv"            "Du får bara poäng de första X gångerna du klarar en tier 1 eller 2 banan."
+    }
+       
+    "Cheater Finish"
+    {
+        "sv"            "Ditt rekord kommer inte sparas om du har fuskat, besök våran hemsida för att begära unban!"
+    }
+       
+    "Owned"
+    {
+        "#format"           "{1:s},{2:s}"
+        "sv"            "{1} har slagit {2} i en utmaning till döden!"
+    }
+       
+    "Coop Win"
+    {
+        "#format"           "{1:s},{2:s}"
+        "sv"            "{1} och {2} har klarat de som ett lag!"
+    }
+       
+    "Coop Fail"
+    {
+        "#format"           "{1:s},{2:s}"
+        "sv"            "{1} har avbrytit samarbetet med {2}!"
+    }
+       
+    "Adminmode Enabled"
+    {
+        "sv"            "Zonadminstratörsläge aktiverat."
+    }
+       
+    "Adminmode Disabled"
+    {
+        "sv"            "Zonadminstratörsläge avaktiverat."
+    }
+       
+    "Zones Reloaded"
+    {
+        "sv"            "Zoner omladdade."
+    }
+       
+    "No Target"
+    {
+        "sv"            "Ogiltigt mål"
+    }
+       
+    "Not Alive"
+    {
+        "sv"            "Du måste vara vid liv för att använda detta kommando."
+    }
+       
+    "Hide Enabled"
+    {
+        "sv"            "Andra spelare är nu gömda."
+    }
+       
+    "Hide Disabled"
+    {
+        "sv"            "Andra spelare är nu synliga."
+    }
+       
+    "There is no bonus in this map"
+    {
+        "sv"            "Det finns ingen bonus på denna bana."
+    }
+	
+	"Multi bhop not available"
+	{
+		"sv"			"Multihop och Nohop är inte tillgängliga på den här banan."
+	}
+	
+	"No styles enabled"
+	{
+		"sv"			"Ingen spelstil aktiverad."
+	}
+	
+	"You failed vegas mission"
+	{
+		"sv"			"Du har misslyckats med vegas uppdraget. Du måste starta om för att samla alla vegas plattformer."
+	}
+	
+	"Vegas won"
+	{
+		"#format"		"{1:s},{2:d}"
+		"sv"			"{1} samlade alla vegas plattformer och fick {2} poäng för att klara uppdraget."
+	}
+	
+	"Vegas final game"
+	{
+		"sv"			"Det här var det sista vegas uppdraget tills banan byts!"
+	}
+}

@@ -1,0 +1,9 @@
+Timer-Rankings
+
+This plugin ranks players by points and gives chat-tags for players rank. ( Requires simple chat processor )
+
+Install instructions for colored chatranks can be found in the timer install instructions step 8.
+
+
+
+

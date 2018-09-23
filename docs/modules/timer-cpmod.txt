@@ -1,0 +1,7 @@
+Timer-CpMod
+
+This plugins allow to save your position and restore it another day
+
+Requires "cpmod" keyvalue in configs/databases.cfg
+
+Config file in cfg/sourcemod/timer/timer-cpmod.cfg
