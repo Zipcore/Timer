@@ -463,7 +463,7 @@ public Action:Command_PersonalRecord(client, args)
 		new track = Timer_GetTrack(client);
 
 		decl String:auth[32];
-		GetClientAuthString(target, auth, sizeof(auth));
+		GetClientAuthId(target, AuthId_Steam2, auth, sizeof(auth));
 
 		for (new i = 0; i < GetArraySize(g_hCache[style][track]); i++)
 		{
@@ -1639,7 +1639,7 @@ CreateDeleteMenu(client, target, String:targetmap[64], ignored = -1)
 	else if(StrEqual(targetmap, g_currentMap))
 	{
 		decl String:auth[32];
-		GetClientAuthString(target, auth, sizeof(auth));
+		GetClientAuthId(target, AuthId_Steam2, auth, sizeof(auth));
 
 		decl String:query[512];
 		FormatEx(query, sizeof(query), "SELECT id, time, jumps, style, auth FROM `round` WHERE map = '%s' AND auth = '%s'%s ORDER BY style, time, jumps", targetmap, auth, buffer);
@@ -1650,7 +1650,7 @@ CreateDeleteMenu(client, target, String:targetmap[64], ignored = -1)
 	else
 	{
 		decl String:auth[32];
-		GetClientAuthString(target, auth, sizeof(auth));
+		GetClientAuthId(target, AuthId_Steam2, auth, sizeof(auth));
 
 		decl String:query[512];
 		FormatEx(query, sizeof(query), "SELECT id, time, jumps, style, auth FROM `round` WHERE map = '%s' AND auth = '%s'%s ORDER BY style, time, jumps", targetmap, auth, buffer);
@@ -1674,7 +1674,7 @@ public CreateDeleteMenuCallback(Handle:owner, Handle:hndl, const String:error[],
 	SetMenuExitButton(menu, true);
 
 	decl String:auth[32];
-	GetClientAuthString(client, auth, sizeof(auth));
+	GetClientAuthId(client, AuthId_Steam2, auth, sizeof(auth));
 
 	while (SQL_FetchRow(hndl))
 	{
@@ -1749,7 +1749,7 @@ public Native_GetStyleRank(Handle:plugin, numParams)
 	new style = GetNativeCell(3);
 
 	decl String:auth[32];
-	GetClientAuthString(client, auth, sizeof(auth));
+	GetClientAuthId(client, AuthId_Steam2, auth, sizeof(auth));
 
 	for (new i = 0; i < GetArraySize(g_hCache[style][track]); i++)
 	{
@@ -1787,7 +1787,7 @@ public Native_GetBestRound(Handle:plugin, numParams)
 	new track = GetNativeCell(3);
 
 	decl String:auth[32];
-	GetClientAuthString(client, auth, sizeof(auth));
+	GetClientAuthId(client, AuthId_Steam2, auth, sizeof(auth));
 
 	if(GetArraySize(g_hCache[style][track]) <= 0)
 		return false;
@@ -2266,7 +2266,7 @@ public OnTimerRecord(client, track, style, Float:time, Float:lasttime, currentra
 		nNewCache[Ignored] = false;
 		Timer_GetClientTimer(client, enabled, time, nNewCache[Jumps], fpsmax);
 		nNewCache[Id] = -1; // Unknown/Fresh
-		GetClientAuthString(client, nNewCache[Auth], 32);
+		GetClientAuthId(client, AuthId_Steam2, nNewCache[Auth], 32);
 		nNewCache[Time] = time;
 		Timer_SecondsToTime(time, nNewCache[TimeString], 16, 2);
 		nNewCache[Style] = style;

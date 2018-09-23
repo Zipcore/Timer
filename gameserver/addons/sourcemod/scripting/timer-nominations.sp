@@ -90,7 +90,7 @@ public OnPluginStart()
 	RegAdminCmd("sm_nominate_addmap", Command_Addmap, ADMFLAG_CHANGEMAP, "sm_nominate_addmap <mapname> - Forces a map to be on the next mapvote.");
 
 	// Nominations Extended cvars
-	CreateConVar("ne_version", MCE_VERSION, "Nominations Extended Version", FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_NOTIFY|FCVAR_DONTRECORD);
+	CreateConVar("ne_version", MCE_VERSION, "Nominations Extended Version", FCVAR_SPONLY|FCVAR_NOTIFY|FCVAR_DONTRECORD);
 
 
 	g_mapTrie = CreateTrie();
@@ -310,7 +310,7 @@ BuildMapMenu()
 
 	decl String:map[PLATFORM_MAX_PATH];
 
-	new Handle:excludeMaps = INVALID_HANDLE;
+	ArrayList excludeMaps = null;
 	decl String:currentMap[32];
 
 	if (GetConVarBool(g_Cvar_ExcludeOld))
@@ -341,7 +341,7 @@ BuildMapMenu()
 		/* Dont bother with this check if the current map check passed */
 		if (GetConVarBool(g_Cvar_ExcludeOld) && status == MAPSTATUS_ENABLED)
 		{
-			if (FindStringInArray(excludeMaps, map) != -1)
+			if (excludeMaps.FindString(map) != -1)
 			{
 				status = MAPSTATUS_DISABLED|MAPSTATUS_EXCLUDE_PREVIOUS;
 			}

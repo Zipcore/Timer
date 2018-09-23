@@ -255,7 +255,7 @@ public QueryPlayerName(client, String:QueryPlayerName[])
 {
 	decl String:Query[255];
 	decl String:szName[MAX_NAME_LENGTH*2+1];
-	SQL_QuoteString(g_hSQL, QueryPlayerName, szName, MAX_NAME_LENGTH*2+1);
+	SQL_EscapeString(g_hSQL, QueryPlayerName, szName, MAX_NAME_LENGTH*2+1);
 
 	Format(Query, 255, sql_QueryPlayerName, szName);
 

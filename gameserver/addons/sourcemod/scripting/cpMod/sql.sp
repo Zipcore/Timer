@@ -149,7 +149,7 @@ public db_insertPlayer(client){
 	
 	decl String:szName[MAX_NAME_LENGTH*2+1];
 	//escape some quote characters that could mess up the szQuery
-	SQL_QuoteString(g_hDb, szUName, szName, MAX_NAME_LENGTH*2+1);
+	SQL_EscapeString(g_hDb, szUName, szName, MAX_NAME_LENGTH*2+1);
 	
 	Format(szQuery, 255, sql_insertPlayer, szSteamId, g_szMapName, szName);
 	
@@ -173,7 +173,7 @@ public db_updatePlayerCheckpoint(client, current){
 	
 	decl String:szName[MAX_NAME_LENGTH*2+1];
 	//escape some quote characters that could mess up the szQuery
-	SQL_QuoteString(g_hDb, szUName, szName, MAX_NAME_LENGTH*2+1);
+	SQL_EscapeString(g_hDb, szUName, szName, MAX_NAME_LENGTH*2+1);
 	
 	Format(szQuery, 255, sql_insertPlayer, szSteamId, g_szMapName, szName);
 	
@@ -323,7 +323,7 @@ public db_resetPlayerCheckpoints(client, String:szPlayerName[MAX_NAME_LENGTH], S
 	
 	//escape some quote characters that could mess up the szQuery
 	decl String:szName[MAX_NAME_LENGTH*2+1];
-	SQL_QuoteString(g_hDb, szPlayerName, szName, MAX_NAME_LENGTH*2+1);
+	SQL_EscapeString(g_hDb, szPlayerName, szName, MAX_NAME_LENGTH*2+1);
 	
 	Format(szQuery, 255, sql_resetCheckpoints, szName, szMapName);
 	

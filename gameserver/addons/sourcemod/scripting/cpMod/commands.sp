@@ -99,7 +99,7 @@ public SaveClientLocation(client)
 		}
 
 		//if player on ground
-		if(GetEntDataEnt2(client, FindSendPropOffs("CBasePlayer", "m_hGroundEntity")) != -1 || g_bAir)
+		if(GetEntDataEnt2(client, FindSendPropInfo("CBasePlayer", "m_hGroundEntity")) != -1 || g_bAir)
 		{
 			new whole = g_WholeCp[client];
 			

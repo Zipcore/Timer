@@ -305,7 +305,7 @@ public OnPluginStart()
 
 	AddNormalSoundHook(Hook_NormalSound);
 
-	g_ioffsCollisionGroup = FindSendPropOffs("CBaseEntity", "m_CollisionGroup");
+	g_ioffsCollisionGroup = FindSendPropInfo("CBaseEntity", "m_CollisionGroup");
 
 	g_OnMapZonesLoaded = CreateGlobalForward("OnMapZonesLoaded", ET_Event);
 
@@ -3133,7 +3133,7 @@ stock CheckIllegalTeleport(client)
 	return false;
 }
 
-stock CreateNPC(client, step, bool:double = false)
+stock CreateNPC(client, step, bool:doublelol = false)
 {
 	if (0 < client < MaxClients)
 	{
@@ -3181,7 +3181,7 @@ stock CreateNPC(client, step, bool:double = false)
 			new Float:point2[3];
 			Array_Copy(g_mapZoneEditors[client][Point2], point2, 3);
 
-			if(!double)
+			if(!doublelol)
 			{
 				if(!AddMapZone(g_currentMap, MapZoneType:ZtNPC_Next, lvlbuffer, hcount, point1, point2))
 					PrintToChat(client, "[Timer] Can't save NPC, no database connection.");
@@ -3541,7 +3541,7 @@ DrawBox(Float:fFrom[3], Float:fTo[3], Float:fLife, color[4], bool:flat, iSpriteI
 			fRightBottomBack[2] = fTo[2];
 
 		//initialize tempoary variables top front
-		decl Float:fLeftTopFront[3];
+		float fLeftTopFront[3];
 		fLeftTopFront[0] = fFrom[0];
 		fLeftTopFront[1] = fFrom[1];
 		if(flat)
@@ -3626,10 +3626,10 @@ stock DrawBlueBalls(Float:fFrom[3], Float:fTo[3])
 	fRightBottomBack[2] = fTo[2]-20;
 
 	//initialize tempoary variables top front
-	decl Float:ffLeftTopFront[3];
-	ffLeftTopFront[0] = fFrom[0];
-	ffLeftTopFront[1] = fFrom[1];
-	ffLeftTopFront[2] = fFrom[2]+20;
+	decl Float:fLeftTopFront[3];
+	fLeftTopFront[0] = fFrom[0];
+	fLeftTopFront[1] = fFrom[1];
+	fLeftTopFront[2] = fFrom[2]+20;
 	decl Float:fRightTopFront[3];
 	fRightTopFront[0] = fTo[0];
 	fRightTopFront[1] = fFrom[1];
@@ -3646,7 +3646,7 @@ stock DrawBlueBalls(Float:fFrom[3], Float:fTo[3])
 	fRightTopBack[2] = fFrom[2]+20;
 
 	TE_SetupGlowSprite(fLeftTopBack, gGlow1, 1.0, 1.0, 255);TE_SendToAll();
-	TE_SetupGlowSprite(ffLeftTopFront, gGlow1, 1.0, 1.0, 255);TE_SendToAll();
+	TE_SetupGlowSprite(fLeftTopFront, gGlow1, 1.0, 1.0, 255);TE_SendToAll();
 	TE_SetupGlowSprite(fRightTopFront, gGlow1, 1.0, 1.0, 255);TE_SendToAll();
 	TE_SetupGlowSprite(fRightTopBack, gGlow1, 1.0, 1.0, 255);TE_SendToAll();
 }
@@ -3676,10 +3676,10 @@ stock DrawSmoke(Float:fFrom[3], Float:fTo[3])
 	fRightBottomBack[2] = fTo[2]-50;
 
 	//initialize tempoary variables top front
-	decl Float:ffLeftTopFront[3];
-	ffLeftTopFront[0] = fFrom[0];
-	ffLeftTopFront[1] = fFrom[1];
-	ffLeftTopFront[2] = fFrom[2]+50;
+	decl Float:fLeftTopFront[3];
+	fLeftTopFront[0] = fFrom[0];
+	fLeftTopFront[1] = fFrom[1];
+	fLeftTopFront[2] = fFrom[2]+50;
 	decl Float:fRightTopFront[3];
 	fRightTopFront[0] = fTo[0];
 	fRightTopFront[1] = fFrom[1];
@@ -3696,7 +3696,7 @@ stock DrawSmoke(Float:fFrom[3], Float:fTo[3])
 	fRightTopBack[2] = fFrom[2]+50;
 
 	TE_SetupSmoke(fLeftTopBack, gSmoke1, 10.0, 2);TE_SendToAll();
-	TE_SetupSmoke(ffLeftTopFront, gSmoke1, 10.0, 2);TE_SendToAll();
+	TE_SetupSmoke(fLeftTopFront, gSmoke1, 10.0, 2);TE_SendToAll();
 	TE_SetupSmoke(fRightTopFront, gSmoke1, 10.0, 2);TE_SendToAll();
 	TE_SetupSmoke(fRightTopBack, gSmoke1, 10.0, 2);TE_SendToAll();
 }
@@ -3726,7 +3726,7 @@ stock DrawXBeam(Float:fFrom[3], Float:fTo[3])
 	fRightBottomBack[2] = fTo[2]-20;
 
 	//initialize tempoary variables top front
-	decl Float:ffLeftTopFront[3];
+	decl Float:fLeftTopFront[3];
 	fLeftTopFront[0] = fFrom[0];
 	fLeftTopFront[1] = fFrom[1];
 	fLeftTopFront[2] = fFrom[2]+20;
@@ -3745,7 +3745,7 @@ stock DrawXBeam(Float:fFrom[3], Float:fTo[3])
 	fRightTopBack[1] = fTo[1];
 	fRightTopBack[2] = fFrom[2]+20;
 
-	TE_SetupBeamPoints(fRightTopBack, ffLeftTopFront, gLaser1, 0, 0, 0, 1.1, 25.0, 25.0, 0, 1.0, {255, 0, 0, 255}, 3 );TE_SendToAll();
+	TE_SetupBeamPoints(fRightTopBack, fLeftTopFront, gLaser1, 0, 0, 0, 1.1, 25.0, 25.0, 0, 1.0, {255, 0, 0, 255}, 3 );TE_SendToAll();
 	TE_SetupBeamPoints(fLeftTopBack, fRightTopFront, gLaser1, 0, 0, 0, 1.1, 25.0, 25.0, 0, 1.0, {255, 0, 0, 255}, 3 );TE_SendToAll();
 }
 
@@ -3774,7 +3774,7 @@ stock DrawXBeam2(Float:fFrom[3], Float:fTo[3])
 	fRightBottomBack[2] = fTo[2]-20;
 
 	//initialize tempoary variables top front
-	decl Float:ffLeftTopFront[3];
+	decl Float:fLeftTopFront[3];
 	fLeftTopFront[0] = fFrom[0];
 	fLeftTopFront[1] = fFrom[1];
 	fLeftTopFront[2] = fFrom[2]+20;
@@ -5541,7 +5541,7 @@ public bool:FilterOnlyPlayers(entity, contentsMask, any:data)
 
 stock FindCollisionGroup()
 {
-	g_ioffsCollisionGroup = FindSendPropOffs("CBaseEntity", "m_CollisionGroup");
+	g_ioffsCollisionGroup = FindSendPropInfo("CBaseEntity", "m_CollisionGroup");
 }
 
 // For Noblock

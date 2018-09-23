@@ -146,7 +146,7 @@ public GetGeoTopCallback(Handle:owner, Handle:hndl, const String:error[], any:cl
 			iIndex++;
 		}
 
-		SetPackPosition(hPack, 0);
+		SetPackPosition(hPack, view_as<DataPackPos>(0));
 		WritePackCell(hPack, iIndex);
 		CreateTopMenu(client, hPack);
 	}

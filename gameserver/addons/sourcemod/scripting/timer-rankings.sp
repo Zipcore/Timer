@@ -173,7 +173,7 @@ public OnPluginStart()
 	
 	LoadTranslations("common.phrases");
 	LoadTranslations("timer-rankings.phrases");
-	AutoExecConfig_CreateConVar("timer_ranks_version", PL_VERSION, "[Timer] Rankings: Version", FCVAR_PLUGIN|FCVAR_REPLICATED|FCVAR_NOTIFY|FCVAR_DONTRECORD);
+	AutoExecConfig_CreateConVar("timer_ranks_version", PL_VERSION, "[Timer] Rankings: Version", FCVAR_REPLICATED|FCVAR_NOTIFY|FCVAR_DONTRECORD);
 
 	g_hEnabled = AutoExecConfig_CreateConVar("timer_ranks_enabled", "1", "Determines operating mode of the plugin. (0 = Disabled, 1 = Enabled, 2 = Debug)", FCVAR_NONE, true, 0.0, true, 2.0);
 	HookConVarChange(g_hEnabled, OnCVarChange);
@@ -415,7 +415,7 @@ ConnectSQL()
 		{
 			if(IsClientInGame(i) && !IsFakeClient(i))
 			{
-				g_bAuthed[i] = GetClientAuthString(i, g_sAuth[i], sizeof(g_sAuth[]));
+				g_bAuthed[i] = GetClientAuthId(i, AuthId_Steam2, g_sAuth[i], sizeof(g_sAuth[]));
 				if(!g_bAuthed[i])
 					CreateTimer(2.0, Timer_AuthClient, GetClientUserId(i), TIMER_FLAG_NO_MAPCHANGE|TIMER_REPEAT);
 				else
@@ -486,7 +486,7 @@ public OnClientPostAdminCheck(client)
 	
 	g_bCheck[client] = true;
 	
-	g_bAuthed[client] = GetClientAuthString(client, g_sAuth[client], sizeof(g_sAuth[]));
+	g_bAuthed[client] = GetClientAuthId(client, AuthId_Steam2, g_sAuth[client], sizeof(g_sAuth[]));
 	
 	//Position method 2 is using no points and the plugin does not fire the connect msg, retry on Timer_AuthClient
 	if(g_bAuthed[client] && g_iPositionMethod == 2)
@@ -1647,7 +1647,7 @@ public CallBack_Top(Handle:owner, Handle:hndl, const String:error[], any:userid)
 			iIndex++;
 		}
 
-		SetPackPosition(hPack, 0);
+		SetPackPosition(hPack, view_as<DataPackPos>(0));
 		WritePackCell(hPack, iIndex);
 		CreateTopMenu(client, hPack);
 	}
@@ -1714,7 +1714,7 @@ public CallBack_Next(Handle:owner, Handle:hndl, const String:error[], any:userid
 			iIndex++;
 		}
 
-		SetPackPosition(hPack, 0);
+		SetPackPosition(hPack, view_as<DataPackPos>(0));
 		WritePackCell(hPack, iIndex);
 		CreateNextMenu(client, hPack);
 	}
@@ -2462,7 +2462,7 @@ public Action:Timer_AuthClient(Handle:timer, any:userid)
 	new client = GetClientOfUserId(userid);
 	if(IsClientInGame(client))
 	{
-		g_bAuthed[client] = GetClientAuthString(client, g_sAuth[client], sizeof(g_sAuth[]));
+		g_bAuthed[client] = GetClientAuthId(client, AuthId_Steam2, g_sAuth[client], sizeof(g_sAuth[]));
 		if(!g_bAuthed[client])
 			return Plugin_Continue;
 		else

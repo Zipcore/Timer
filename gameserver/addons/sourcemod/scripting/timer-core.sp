@@ -32,7 +32,7 @@ new bool:g_Botmimic = false;
  * Global Enums
  */
  
-enum Timer
+enum TimerEnum
 {
 	Enabled,
 	Float:StartTime,
@@ -66,7 +66,7 @@ new String:g_currentMap[64];
 
 new g_GetPauseLevel[MAXPLAYERS+1];
 
-new g_timers[MAXPLAYERS+1][Timer];
+new g_timers[MAXPLAYERS+1][TimerEnum];
 new g_bestTimeCache[MAXPLAYERS+1][BestTimeCacheEntity];
 
 new Handle:g_timerStartedForward;
@@ -127,7 +127,7 @@ public OnPluginStart()
 	LoadPhysics();
 	LoadTimerSettings();
 	
-	CreateConVar("timer_version", PL_VERSION, "Timer Version", FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
+	CreateConVar("timer_version", PL_VERSION, "Timer Version", FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
 	
 	RegConsoleCmd("sm_credits", Command_Credits);
 	mod = GetGameMod();
@@ -542,7 +542,7 @@ bool:PauseTimer(client)
 	g_timers[client][PauseStartTime] = GetGameTime();
 	g_GetPauseLevel[client] = Timer_GetClientLevel(client);
 	
-	CreateTimer(0.0, Timer_ValidatePause, client, TIMER_FLAG_NO_MAPCHANGE);
+	RequestFrame(ValidatePause, client);
 	
 	CPrintToChat(client, PLUGIN_PREFIX, "Pause Info");
 
@@ -569,8 +569,8 @@ bool:PauseTimer(client)
 		{
 			g_timers[mate][IsPaused] = true;
 			g_timers[mate][PauseStartTime] = GetGameTime();
-		
-			CreateTimer(0.0, Timer_ValidatePause, mate, TIMER_FLAG_NO_MAPCHANGE);
+			
+			RequestFrame(ValidatePause, mate);
 		
 			CPrintToChat(mate, PLUGIN_PREFIX, "Pause Info");
 		
@@ -595,14 +595,10 @@ bool:PauseTimer(client)
 	return true;
 }
 
-public Action:Timer_ValidatePause(Handle:timer, any:client)
+public void ValidatePause(any client)
 {
 	if(CalculateTime(client) < 1.0)
-	{
 		ResetTimer(client);
-	}
-	
-	return Plugin_Stop;
 }
 
 bool:ResumeTimer(client)
@@ -692,8 +688,8 @@ FinishRound(client, const String:map[], Float:time, jumps, style, fpsmax, track)
 	if (IsFakeClient(client))
 		return;
 	
-	decl String:auth[32];
-	GetClientAuthString(client, auth, sizeof(auth));
+	char auth[32];
+	GetClientAuthId(client, AuthId_Steam2, auth, sizeof(auth));
 	
 	//ignore unranked
 	if(g_timerPhysics) 
@@ -952,7 +948,7 @@ public BotMimic_OnRecordSaved(client, String:name[], String:category[], String:s
 	Format(buffer, sizeof(buffer), "/%d_%d/", Timer_GetStyle(client), Timer_GetTrack(client));
 	ReplaceString(filename, sizeof(filename), buffer, "", true);
 	ReplaceString(filename, sizeof(filename), "addons/sourcemod/data/botmimic", "", true);
-	GetClientAuthString(client, buffer, sizeof(buffer), true);
+	GetClientAuthId(client, AuthId_Steam2, buffer, sizeof(buffer));
 	ReplaceString(buffer, sizeof(buffer), ":", "_", true);
 	ReplaceString(filename, sizeof(filename), buffer, "", true);
 	ReplaceString(filename, sizeof(filename), g_currentMap, "", true);
@@ -1013,13 +1009,13 @@ public OnTimerSqlConnected(Handle:sql)
 {
 	g_hSQL = sql;
 	g_hSQL = INVALID_HANDLE;
-	CreateTimer(0.1, Timer_SQLReconnect, _ , TIMER_FLAG_NO_MAPCHANGE);
+	RequestFrame(SQL_Reconnect);
 }
 
 public OnTimerSqlStop()
 {
 	g_hSQL = INVALID_HANDLE;
-	CreateTimer(0.1, Timer_SQLReconnect, _ , TIMER_FLAG_NO_MAPCHANGE);
+	RequestFrame(SQL_Reconnect);
 }
 
 ConnectSQL()
@@ -1027,14 +1023,13 @@ ConnectSQL()
 	g_hSQL = Handle:Timer_SqlGetConnection();
 	
 	if (g_hSQL == INVALID_HANDLE)
-		CreateTimer(0.1, Timer_SQLReconnect, _ , TIMER_FLAG_NO_MAPCHANGE);
+		RequestFrame(SQL_Reconnect);
 	else Timer_LogInfo("[Timer] MySQL connection established and conneted to timer-core.");
 }
 
-public Action:Timer_SQLReconnect(Handle:timer, any:data)
+public void SQL_Reconnect(any data)
 {
 	ConnectSQL();
-	return Plugin_Stop;
 }
 
 public Native_Reset(Handle:plugin, numParams)
@@ -1161,7 +1156,8 @@ public Native_GetClientActiveReplayPath(Handle:plugin, numParams)
 {
 	new client = GetNativeCell(1);
 	decl String:path[256], String:auth[64];
-	GetClientAuthString(client, auth, sizeof(auth), true);
+	GetClientAuthId(client, AuthId_Steam2, auth, sizeof(auth));
+	
 	Format(path, sizeof(path), "addons/sourcemod/data/botmimic/%d_%d/%s/%s/%s.rec", g_timers[client][CurrentStyle], g_timers[client][Track], g_currentMap, auth, g_timers[client][ReplayFile]);
 	ReplaceString(path, sizeof(path), ":", "_", true);
 	SetNativeString(2, path, 256);
@@ -1380,7 +1376,7 @@ public CreditsPanel4(client)
 	DrawPanelText(panel, "");
 	DrawPanelText(panel, "   ---- Special Thanks ----");
 	DrawPanelText(panel, "Schoschy, .#IsKulT, Shadow^_^,");
-	DrawPanelText(panel, "Joy. Extan, -XP.| Mr.loser ™.K.W.©,");
+	DrawPanelText(panel, "Joy. Extan, -XP.| Mr.loser â„¢.K.W.Â©,");
 	DrawPanelText(panel, "");
 	DrawPanelText(panel, " and many others.");
 	DrawPanelText(panel, " ");

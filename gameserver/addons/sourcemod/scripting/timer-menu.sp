@@ -39,7 +39,7 @@ public OnMapStart()
 
 public Action:Command_Menu(client, args)
 {
-	Menu(client);
+	OpenMenu(client);
 
 	return Plugin_Handled;
 }
@@ -219,7 +219,7 @@ public CommandPanelHandler (Handle:menu, MenuAction:action,client, param2)
     }
 }
 
-Menu(client)
+OpenMenu(client)
 {
 	if (0 < client < MaxClients)
 	{

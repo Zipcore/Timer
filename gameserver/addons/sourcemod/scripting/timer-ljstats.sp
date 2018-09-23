@@ -220,7 +220,7 @@ public Native_SetInValidJump(Handle:plugin, numParams)
 }
 public OnPluginStart()
 {
-	CreateConVar("ljstats_version", PL_VERSION, "Long Jump Stats - justshoot", FCVAR_PLUGIN|FCVAR_NOTIFY);
+	CreateConVar("ljstats_version", PL_VERSION, "Long Jump Stats - justshoot", FCVAR_NOTIFY);
 	RegAdminCmd("sm_ljadm", Command_ljadm, ADMFLAG_ROOT, "Delete Record");
 	RegConsoleCmd("sm_lj", Command_ljmode, "Record Jump Stats");
 	RegConsoleCmd("sm_ljstats", Command_ljmode, "Record Jump Stats");
@@ -233,24 +233,24 @@ public OnPluginStart()
 	HookEvent("player_jump", event_jump); //When players jumped
 	HookEvent("player_team", event_team);
 	HookEvent("round_start", event_roundstart);
-	g_hCvar_Show_Message = CreateConVar("ljstats_show_msg", "0", "0:All, 1:only for lj", FCVAR_PLUGIN);
-	g_hCvar_DB = CreateConVar("ljstats_db_name", "ljstats", "Database name, sqlite", FCVAR_PLUGIN);
-	g_hCvar_Invalid_Jump = CreateConVar("ljstats_invalid_lj", "280.0", "Cancel Jump if PRESTRAFE and DISTANCE is over this value.", FCVAR_PLUGIN);
-	g_hCvar_Stop_LJ = CreateConVar("ljstats_print_lj", "240.0", "Long Jump minimum units to show result to player.", FCVAR_PLUGIN);
-	g_hCvar_Stop_BJ = CreateConVar("ljstats_print_bj", "270.0", "Bhop Jump minimum units to show result to player.", FCVAR_PLUGIN);
-	g_hCvar_Stop_BUJ = CreateConVar("ljstats_print_buj", "250.0", "Bhop Up Jump minimum units to show result to player.", FCVAR_PLUGIN);
-	g_hCvar_Stop_Block_LJ = CreateConVar("ljstats_register_block_lj", "235.0", "Minimum units to register Block Long Jump.", FCVAR_PLUGIN);
-	g_hCvar_Print_LJ = CreateConVar("ljstats_show_lj", "260.0", "Print long jump result over this value.", FCVAR_PLUGIN);
-	g_hCvar_Print_WJ = CreateConVar("ljstats_show_wj", "270.0", "Print weird jump result over this value.", FCVAR_PLUGIN);
-	g_hCvar_Print_BJ = CreateConVar("ljstats_show_bj", "270.0", "Print bhop Jump result over this value.", FCVAR_PLUGIN);
-	g_hCvar_Print_Block_LJ = CreateConVar("ljstats_show_block_lj", "255.0", "Print Block Long Jump result over this value.", FCVAR_PLUGIN);
-	g_hCvar_Print_Block_BJ = CreateConVar("ljstats_show_block_bj", "275.0", "Print Block Bhop Jump result over this value.", FCVAR_PLUGIN);
-	g_hCvar_DB_Record = CreateConVar("ljstats_db_record", "260.0", "Record result into database over this value.", FCVAR_PLUGIN);
-	g_hCvar_Sound[0] = CreateConVar("ljstats_snd_impressive", "255.0", "Play Sound - impressive.", FCVAR_PLUGIN);
-	g_hCvar_Sound[1] = CreateConVar("ljstats_snd_perfect", "260.0", "Play Sound - perfect.", FCVAR_PLUGIN);
-	g_hCvar_Sound[2] = CreateConVar("ljstats_snd_wickedsick", "265.0", "Play Sound - wickedsick.", FCVAR_PLUGIN);
-	g_hCvar_Sound[3] = CreateConVar("ljstats_snd_godlick", "268.0", "Play Sound - godlike.", FCVAR_PLUGIN);
-	g_hCvar_Sound[4] = CreateConVar("ljstats_snd_holyshit", "270.0", "Play Sound - holyshit.", FCVAR_PLUGIN);
+	g_hCvar_Show_Message = CreateConVar("ljstats_show_msg", "0", "0:All, 1:only for lj");
+	g_hCvar_DB = CreateConVar("ljstats_db_name", "ljstats", "Database name, sqlite");
+	g_hCvar_Invalid_Jump = CreateConVar("ljstats_invalid_lj", "280.0", "Cancel Jump if PRESTRAFE and DISTANCE is over this value.");
+	g_hCvar_Stop_LJ = CreateConVar("ljstats_print_lj", "240.0", "Long Jump minimum units to show result to player.");
+	g_hCvar_Stop_BJ = CreateConVar("ljstats_print_bj", "270.0", "Bhop Jump minimum units to show result to player.");
+	g_hCvar_Stop_BUJ = CreateConVar("ljstats_print_buj", "250.0", "Bhop Up Jump minimum units to show result to player.");
+	g_hCvar_Stop_Block_LJ = CreateConVar("ljstats_register_block_lj", "235.0", "Minimum units to register Block Long Jump.");
+	g_hCvar_Print_LJ = CreateConVar("ljstats_show_lj", "260.0", "Print long jump result over this value.");
+	g_hCvar_Print_WJ = CreateConVar("ljstats_show_wj", "270.0", "Print weird jump result over this value.");
+	g_hCvar_Print_BJ = CreateConVar("ljstats_show_bj", "270.0", "Print bhop Jump result over this value.");
+	g_hCvar_Print_Block_LJ = CreateConVar("ljstats_show_block_lj", "255.0", "Print Block Long Jump result over this value.");
+	g_hCvar_Print_Block_BJ = CreateConVar("ljstats_show_block_bj", "275.0", "Print Block Bhop Jump result over this value.");
+	g_hCvar_DB_Record = CreateConVar("ljstats_db_record", "260.0", "Record result into database over this value.");
+	g_hCvar_Sound[0] = CreateConVar("ljstats_snd_impressive", "255.0", "Play Sound - impressive.");
+	g_hCvar_Sound[1] = CreateConVar("ljstats_snd_perfect", "260.0", "Play Sound - perfect.");
+	g_hCvar_Sound[2] = CreateConVar("ljstats_snd_wickedsick", "265.0", "Play Sound - wickedsick.");
+	g_hCvar_Sound[3] = CreateConVar("ljstats_snd_godlick", "268.0", "Play Sound - godlike.");
+	g_hCvar_Sound[4] = CreateConVar("ljstats_snd_holyshit", "270.0", "Play Sound - holyshit.");
 	HookConVarChange(g_hCvar_Show_Message, ConVarChanged);
 	HookConVarChange(g_hCvar_DB, ConVarChanged);
 	HookConVarChange(g_hCvar_Invalid_Jump, ConVarChanged);
@@ -428,9 +428,9 @@ public Action:Touch_Wall(ent,client)
 	}
 	return Plugin_Continue;
 }
-public Action:event_jump(Handle:Event, const String:Name[], bool:Broadcast)
+public Action:event_jump(Handle: event, const String:Name[], bool:Broadcast)
 {
-	new client = GetClientOfUserId(GetEventInt(Event, "userid"));
+	new client = GetClientOfUserId(GetEventInt(event, "userid"));
 	if(g_bLJmode[client])
 	{
 		if(PlayerReadyType[client] != ReadyType_None)
@@ -475,21 +475,21 @@ public Action:event_jump(Handle:Event, const String:Name[], bool:Broadcast)
 		}
 	}
 }
-public Action:event_team(Handle:Event, const String:Name[], bool:Broadcast)
+public Action:event_team(Handle:event, const String:Name[], bool:Broadcast)
 {
-	new client = GetClientOfUserId(GetEventInt(Event, "userid"));
+	new client = GetClientOfUserId(GetEventInt(event, "userid"));
 	if(client != 0)
 	{
 		if(IsClientInGame(client))
 		{
-			if(GetEventInt(Event, "team")==1)
+			if(GetEventInt(event, "team")==1)
 			{
 				g_bLJmode[client] = false;
 			}
 		}
 	}
 }
-public Action:event_roundstart(Handle:Event, const String:Name[], bool:Broadcast)
+public Action:event_roundstart(Handle:event, const String:Name[], bool:Broadcast)
 {
 	FindNHookWalls();//i don't know why. but better hook after level completely loaded.
 	HookTrigger();
@@ -640,7 +640,7 @@ CalculateBlockGap(client, Float:origin[3], Float:target[3])
 {
 	new Float:distance = GetVectorDistance(origin, target);
 	new Float:rad = DegToRad(15.0);
-	new Float:newdistance = FloatDiv(distance, Cosine(rad));
+	new Float:newdistance = (distance / Cosine(rad));
 	decl Float:eye[3], Float:eyeangle[2][3];
 	new Float:temp = 0.0;
 	GetClientEyePosition(client, eye);
@@ -842,8 +842,8 @@ stock CalculateBlockGap2(client, Float:origin[2][3], Float:target[2][3])
 }
 GetEdgeOrigin(client, Float:ground[3], Float:result[3])
 {
-	result[0] = FloatDiv(g_EdgeVector[client][0]*ground[0] + g_EdgeVector[client][1]*g_EdgePoint[client][0], g_EdgeVector[client][0]+g_EdgeVector[client][1]);
-	result[1] = FloatDiv(g_EdgeVector[client][1]*ground[1] - g_EdgeVector[client][0]*g_EdgePoint[client][1], g_EdgeVector[client][1]-g_EdgeVector[client][0]);
+	result[0] = ((g_EdgeVector[client][0]*ground[0] + g_EdgeVector[client][1]*g_EdgePoint[client][0]) / (g_EdgeVector[client][0]+g_EdgeVector[client][1]));
+	result[1] = ((g_EdgeVector[client][1]*ground[1] - g_EdgeVector[client][0]*g_EdgePoint[client][1]) / (g_EdgeVector[client][1]-g_EdgeVector[client][0]));
 	result[2] = ground[2];
 }
 CorrectEdgePoint(client)

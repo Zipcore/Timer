@@ -226,7 +226,7 @@ public OnPluginStart()
 	g_iOffs_vecOrigin = FindSendPropInfo("CBaseEntity","m_vecOrigin");
 	g_iOffs_vecMins = FindSendPropInfo("CBaseEntity","m_vecMins");
 	g_iOffs_vecMaxs = FindSendPropInfo("CBaseEntity","m_vecMaxs");
-	g_iOffs_Velocity = FindSendPropOffs("CBasePlayer", "m_vecVelocity[0]");
+	g_iOffs_Velocity = FindSendPropInfo("CBasePlayer", "m_vecVelocity[0]");
 
 	g_timerMapzones = LibraryExists("timer-mapzones");
 	g_timerLjStats = LibraryExists("timer-ljstats");
@@ -1645,13 +1645,13 @@ FindBhopBlocks()
 		{
 			if(g_iDoorOffs_vecPosition1 == -1)
 			{
-				g_iDoorOffs_vecPosition1 = FindDataMapOffs(ent,"m_vecPosition1");
-				g_iDoorOffs_vecPosition2 = FindDataMapOffs(ent,"m_vecPosition2");
-				g_iDoorOffs_flSpeed = FindDataMapOffs(ent,"m_flSpeed");
-				g_iDoorOffs_spawnflags = FindDataMapOffs(ent,"m_spawnflags");
-				g_iDoorOffs_NoiseMoving = FindDataMapOffs(ent,"m_NoiseMoving");
-				g_iDoorOffs_sLockedSound = FindDataMapOffs(ent,"m_ls.sLockedSound");
-				g_iDoorOffs_bLocked = FindDataMapOffs(ent,"m_bLocked");
+				g_iDoorOffs_vecPosition1 = FindDataMapInfo(ent,"m_vecPosition1");
+				g_iDoorOffs_vecPosition2 = FindDataMapInfo(ent,"m_vecPosition2");
+				g_iDoorOffs_flSpeed = FindDataMapInfo(ent,"m_flSpeed");
+				g_iDoorOffs_spawnflags = FindDataMapInfo(ent,"m_spawnflags");
+				g_iDoorOffs_NoiseMoving = FindDataMapInfo(ent,"m_NoiseMoving");
+				g_iDoorOffs_sLockedSound = FindDataMapInfo(ent,"m_ls.sLockedSound");
+				g_iDoorOffs_bLocked = FindDataMapInfo(ent,"m_bLocked");
 			}
 
 			GetEntDataVector(ent,g_iDoorOffs_vecPosition1,startpos);
@@ -1685,10 +1685,10 @@ FindBhopBlocks()
 		{
 			if(g_iButtonOffs_vecPosition1 == -1)
 			{
-				g_iButtonOffs_vecPosition1 = FindDataMapOffs(ent,"m_vecPosition1");
-				g_iButtonOffs_vecPosition2 = FindDataMapOffs(ent,"m_vecPosition2");
-				g_iButtonOffs_flSpeed = FindDataMapOffs(ent,"m_flSpeed");
-				g_iButtonOffs_spawnflags = FindDataMapOffs(ent,"m_spawnflags");
+				g_iButtonOffs_vecPosition1 = FindDataMapInfo(ent,"m_vecPosition1");
+				g_iButtonOffs_vecPosition2 = FindDataMapInfo(ent,"m_vecPosition2");
+				g_iButtonOffs_flSpeed = FindDataMapInfo(ent,"m_flSpeed");
+				g_iButtonOffs_spawnflags = FindDataMapInfo(ent,"m_spawnflags");
 			}
 
 			GetEntDataVector(ent,g_iButtonOffs_vecPosition1,startpos);

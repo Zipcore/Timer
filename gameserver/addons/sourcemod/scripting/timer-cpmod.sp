@@ -136,28 +136,28 @@ public OnPluginStart()
 	LoadTranslations("cpmod.phrases");
 	
 	db_setupDatabase();
-	CreateConVar("cpMod_version", PL_VERSION, "cp Mod version.", FCVAR_DONTRECORD|FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
-	g_hcvarEnable     = CreateConVar("sm_cp_enabled", "1", "Enable/Disable the plugin.", FCVAR_PLUGIN|FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	CreateConVar("cpMod_version", PL_VERSION, "cp Mod version.", FCVAR_DONTRECORD|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
+	g_hcvarEnable     = CreateConVar("sm_cp_enabled", "1", "Enable/Disable the plugin.", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	g_bEnabled      = GetConVarBool(g_hcvarEnable);
 	HookConVarChange(g_hcvarEnable, OnSettingChanged);
 	
-	g_hcvarRestore    = CreateConVar("sm_cp_restore", "1", "Enable/Disable automatic saving of checkpoints to database.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
+	g_hcvarRestore    = CreateConVar("sm_cp_restore", "1", "Enable/Disable automatic saving of checkpoints to database.", _, true, 0.0, true, 1.0);
 	g_bRestore        = GetConVarBool(g_hcvarRestore);
 	HookConVarChange(g_hcvarRestore, OnSettingChanged);
 
-	g_hcvarEffects    = CreateConVar("sm_cp_effects", "1", "Enable/Disable save effects.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
+	g_hcvarEffects    = CreateConVar("sm_cp_effects", "1", "Enable/Disable save effects.", _, true, 0.0, true, 1.0);
 	g_bEffects        = GetConVarBool(g_hcvarEffects);
 	HookConVarChange(g_hcvarEffects, OnSettingChanged);
 
-	g_hcvarVelocity    = CreateConVar("sm_cp_velocity", "0", "Enable/Disable save and restore velocity/speed.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
+	g_hcvarVelocity    = CreateConVar("sm_cp_velocity", "0", "Enable/Disable save and restore velocity/speed.", _, true, 0.0, true, 1.0);
 	g_bVelocity        = GetConVarBool(g_hcvarVelocity);
 	HookConVarChange(g_hcvarVelocity, OnSettingChanged);
 
-	g_hcvarAir    = CreateConVar("sm_cp_air", "0", "Enable/Disable allow saving in air.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
+	g_hcvarAir    = CreateConVar("sm_cp_air", "0", "Enable/Disable allow saving in air.", _, true, 0.0, true, 1.0);
 	g_bAir        = GetConVarBool(g_hcvarAir);
 	HookConVarChange(g_hcvarAir, OnSettingChanged);
 
-	g_hcvarBlockLastPlayerAlive    = CreateConVar("sm_cp_block_last_player_alive", "0", "Enable/Disable allow using teleports for the last alive player.", FCVAR_PLUGIN, true, 0.0, true, 1.0);
+	g_hcvarBlockLastPlayerAlive    = CreateConVar("sm_cp_block_last_player_alive", "0", "Enable/Disable allow using teleports for the last alive player.", _, true, 0.0, true, 1.0);
 	g_bBlockLastPlayerAlive        = GetConVarBool(g_hcvarBlockLastPlayerAlive);
 	HookConVarChange(g_hcvarBlockLastPlayerAlive, OnSettingChanged);
 	
